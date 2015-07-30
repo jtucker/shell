@@ -17,6 +17,7 @@ Function Touch-File
 
 # Aliases
 New-Alias which get-command
+New-Alias code "$env:LOCALAPPDATA\Code\bin\code.cmd"
 
 # Load posh-git example profile
 . '~\Documents\WindowsPowerShell\Modules\posh-git\profile.example.ps1'
