@@ -15,9 +15,17 @@ Function Touch-File
     }
 }
 
+Function gig {
+  param(
+    [Parameter(Mandatory=$true)]
+    [string[]]$list
+  )
+  $params = $list -join ","
+  Invoke-WebRequest -Uri "https://www.gitignore.io/api/$params" | select -ExpandProperty content | Out-File -FilePath $(Join-Path -path $pwd -ChildPath ".gitignore") -Encoding ascii
+}
+
 # Aliases
 New-Alias which get-command
-New-Alias code "$env:LOCALAPPDATA\Code\bin\code.cmd"
 
 # Load posh-git example profile
 . '~\Documents\WindowsPowerShell\Modules\posh-git\profile.example.ps1'
