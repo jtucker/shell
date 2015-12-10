@@ -24,8 +24,18 @@ Function gig {
   Invoke-WebRequest -Uri "https://www.gitignore.io/api/$params" | select -ExpandProperty content | Out-File -FilePath $(Join-Path -path $pwd -ChildPath ".gitignore") -Encoding ascii
 }
 
+Function Set-ElevatedProcess {
+  $file, [string] $arguments = $args
+  $psi = New-Object System.Diagnostics.ProcessStartInfo $file
+  $psi.Arguments = $arguments
+  $psi.Verb = "runas"
+  $psi.WorkingDirectory = Get-Location
+  [System.Diagnostics.Process]::Start($psi)
+}
+
 # Aliases
 New-Alias which get-command
+New-Alias sudo Set-ElevatedProcess
 
 # Load posh-git example profile
 . '~\Documents\WindowsPowerShell\Modules\posh-git\profile.example.ps1'
