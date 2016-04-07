@@ -1,4 +1,4 @@
-$script:bg    = [Console]::BackgroundColor;
+﻿$script:bg    = [Console]::BackgroundColor;
 $script:first = $true;
 $script:last  = 0;
 
