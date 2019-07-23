@@ -1,16 +1,19 @@
 [user]
-	name = Jason Tucker
-
+  name = Jason Tucker
+  
 [color]
-	branch = auto
-	diff = auto
-	status = auto
+  branch = auto
+  diff = auto
+  status = auto
 
 [color "branch"]
-	current = red reverse
-	local = blue
-	remote = green
-
+  current = red reverse
+  local = blue
+  remote = green
+  
+[fetch]
+  prune = true
+  
 [color "diff"]
   meta = yellow bold
   frag = magenta bold
@@ -30,10 +33,11 @@
   ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
   lc  = "!f() { git ll "$1"^.."$1"; }; f"
   lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
-	logtree = log --graph --oneline --decorate --all
+  logtree = log --graph --oneline --decorate --all
+  lbm = for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)'
 	
 [core]
-	autocrlf = true
+  autocrlf = true
 
 [push]
-	default = simple
+  default = simple
